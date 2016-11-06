@@ -12,15 +12,6 @@ public class Product{
          this.count = count;
      }
 
-    public boolean checkQuantity() {
-        if ( count < 0) {
-            System.out.println("The number cannot be negative");
-            return false;
-        } else {
-            return true;
-        }
-    }
-
     public double getTotalPrice(){
         return count*price;
     }

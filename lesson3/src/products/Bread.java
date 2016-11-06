@@ -15,12 +15,6 @@ public class Bread extends Product {
         super.price = price;
     }
 
-   @Override
-    public boolean checkQuantity() {
-        super.count = count;
-        return super.checkQuantity();
-    }
-
     @Override
     public double getTotalPrice() {
         return super.getTotalPrice();

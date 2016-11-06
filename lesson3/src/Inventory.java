@@ -16,42 +16,46 @@ public class Inventory {
         int numberOfProduct;
         do {
             choice = getValue.nextInt();
-            if (choice == 0) {
+            if (choice == 0 ) {
                 continue;
             } else {
                 System.out.println("Enter quantity of the product (Coockies in kg)");
                 numberOfProduct = getValue.nextInt();
             }
 
-            switch (choice) {
-                case 1:
-                    inventory.put("Bread", new Bread(numberOfProduct));
-                    System.out.println("It added "+ numberOfProduct+ " loaves");
-                    break;
-                case 2:
-                    inventory.put("Coockies", new Cookies(numberOfProduct));
-                    System.out.println("It added "+ numberOfProduct+ " kg of coockies");
-                    break;
-                case 3:
-                    inventory.put("Flakes", new Flakes(numberOfProduct));
-                    System.out.println("It added "+ numberOfProduct+ " packs of flakes");
-                    break;
-                case 4:
-                    inventory.put("Milk", new Milk(numberOfProduct));
-                    System.out.println("It added "+ numberOfProduct+ " packs of milk");
-                    break;
-                case 5:
-                    inventory.put("Snickers", new Bread(numberOfProduct));
-                    System.out.println("It added "+ numberOfProduct+ " snickers");
-                    break;
-                case 6:
-                    inventory.put("Soda", new Bread(numberOfProduct));
-                    System.out.println("It added "+ numberOfProduct+ " cans of soda");
-                    break;
-                case 0:
-                    break;
-                default:
-                    System.out.println("Wrong choice");
+            if (checkQuintity(numberOfProduct)){
+                switch (choice) {
+                    case 1:
+                        inventory.put("Bread", new Bread(numberOfProduct));
+                        System.out.println("It added "+ numberOfProduct+ " loaves");
+                        break;
+                    case 2:
+                        inventory.put("Coockies", new Cookies(numberOfProduct));
+                        System.out.println("It added "+ numberOfProduct+ " kg of coockies");
+                        break;
+                    case 3:
+                        inventory.put("Flakes", new Flakes(numberOfProduct));
+                        System.out.println("It added "+ numberOfProduct+ " packs of flakes");
+                        break;
+                    case 4:
+                        inventory.put("Milk", new Milk(numberOfProduct));
+                        System.out.println("It added "+ numberOfProduct+ " packs of milk");
+                        break;
+                    case 5:
+                        inventory.put("Snickers", new Bread(numberOfProduct));
+                        System.out.println("It added "+ numberOfProduct+ " snickers");
+                        break;
+                    case 6:
+                        inventory.put("Soda", new Bread(numberOfProduct));
+                        System.out.println("It added "+ numberOfProduct+ " cans of soda");
+                        break;
+                    case 0:
+                        break;
+                    default:
+                        System.out.println("Wrong choice");
+                }
+            } else {
+                continue;
             }
 
         } while (choice != 0);
@@ -64,8 +68,8 @@ public class Inventory {
             switch (choice) {
                 case 1:
                     for (String product : inventory.keySet()) {
-                        System.out.println(product + ": count =  " + inventory.get(product).count + " price =  "
-                                + inventory.get(product).price + " total price = "
+                        System.out.println(product + ": count =  " + inventory.get(product).count + "; price =  "
+                                + inventory.get(product).price + "; total price = "
                                 + inventory.get(product).getTotalPrice());
                     }
                     break;
@@ -83,9 +87,15 @@ public class Inventory {
             }
 
         } while (choice != 0);
+    }
 
-
-
+    public static boolean checkQuintity(int number){
+        if (number<=0){
+            System.out.print("The number cannot be 0 or negative\nChoose product again\n");
+            return false;
+        } else {
+            return true;
+        }
     }
 
 }

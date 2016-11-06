@@ -14,11 +14,6 @@ public class Soda extends Product{
     }
 
     @Override
-    public boolean checkQuantity() {
-        return super.checkQuantity();
-    }
-
-    @Override
     public double getTotalPrice() {
         return super.getTotalPrice();
     }
