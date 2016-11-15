@@ -14,6 +14,7 @@ public class Inventory {
         System.out.println("1.Bread\n2.Cookies\n3.Flakes\n4.Milk\n5.Snickers\n6.Soda\n0.Exit");
         int choice;
         int numberOfProduct;
+        
         do {
             choice = getValue.nextInt();
             if (choice == 0 ) {
