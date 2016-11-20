@@ -28,7 +28,7 @@ public class FileSourceProvider implements SourceProvider {
         try (BufferedReader reader = new BufferedReader(new FileReader(pathToSource))) {
             String line;
             while ((line = reader.readLine()) != null) {
-                content.append(line + "\n");
+                content.append(line).append("\n");
             }
         }
         return content.toString();

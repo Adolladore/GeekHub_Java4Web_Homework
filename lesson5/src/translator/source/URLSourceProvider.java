@@ -30,7 +30,7 @@ public class URLSourceProvider implements SourceProvider {
         try (BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()))) {
             String inputLine;
             while ((inputLine = in.readLine()) != null) {
-                content.append(inputLine + "\n");
+                content.append(inputLine).append("\n");
             }
         }
         return content.toString();
