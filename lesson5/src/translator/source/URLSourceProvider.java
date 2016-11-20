@@ -20,7 +20,6 @@ public class URLSourceProvider implements SourceProvider {
         } catch (MalformedURLException e ) {
             return false;
         }
-
     }
 
     @Override
