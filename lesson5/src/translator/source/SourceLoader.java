@@ -23,7 +23,7 @@ public class SourceLoader {
         } else if (sourceProviders.get(1).isAllowed(pathToSource)) {
             return sourceProviders.get(1).load(pathToSource);
         } else {
-           throw new IOException();
+           return null;
         }
     }
 }

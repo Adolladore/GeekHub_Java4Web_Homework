@@ -3,8 +3,8 @@ package translator.source;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.net.MalformedURLException;
 import java.net.URL;
-import java.net.URLConnection;
 
 /**
  * Implementation for loading content from specified URL.<br/>
@@ -13,10 +13,14 @@ import java.net.URLConnection;
 public class URLSourceProvider implements SourceProvider {
 
     @Override
-    public boolean isAllowed(String pathToSource) {
-        String urlPattern = "^http(s{0,1})://[a-zA-Z0-9_/\\-\\.]+\\.([A-Za-z/]{2,5})" +
-                "[a-zA-Z0-9_/\\&\\?\\=\\-\\.\\~\\%]*";
-        return pathToSource.matches(urlPattern);
+    public boolean isAllowed(String pathToSource) throws MalformedURLException {
+        try {
+            URL validOrNot = new URL(pathToSource);
+            return true;
+        } catch (MalformedURLException e ) {
+            return false;
+        }
+
     }
 
     @Override
@@ -24,9 +28,8 @@ public class URLSourceProvider implements SourceProvider {
         StringBuilder builder = new StringBuilder();
         String fileText;
         URL url = new URL(pathToSource);
-        URLConnection connection = url.openConnection();
 
-        try (BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()))) {
+        try (BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()))) {
             String inputLine;
             while ((inputLine = in.readLine()) != null) {
                 builder.append(inputLine + "\n");

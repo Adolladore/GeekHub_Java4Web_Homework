@@ -15,7 +15,7 @@ public class FileSourceProvider implements SourceProvider {
     @Override
     public boolean isAllowed(String pathToSource) throws IOException {
         File file = new File(pathToSource);
-        if (file.exists() && file.isAbsolute()) {
+        if (file.isFile()) {
             return true;
         } else {
             return false;
@@ -24,15 +24,14 @@ public class FileSourceProvider implements SourceProvider {
 
     @Override
     public String load(String pathToSource) throws IOException {
-        StringBuilder builder = new StringBuilder();
+        StringBuilder content = new StringBuilder();
         String fileText;
         try (BufferedReader reader = new BufferedReader(new FileReader(pathToSource))) {
             String line;
             while ((line = reader.readLine()) != null) {
-                builder.append(line + "\n");
+                content.append(line + "\n");
             }
-            fileText = builder.toString();
         }
-        return fileText;
+        return content.toString();
     }
 }

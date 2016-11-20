@@ -38,11 +38,10 @@ public class Translator {
      * @throws IOException
      */
     public String translate(String original) throws  TranslateException {
-
         try {
             String response = urlSourceProvider.load(prepareURL(original));
             return parseContent(response);
-        } catch (SAXException | ParserConfigurationException | IOException e) {
+        } catch (SAXException | ParserConfigurationException | NullPointerException | IOException e) {
             throw new TranslateException(e);
         }
     }

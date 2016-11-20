@@ -5,6 +5,6 @@ package translator;
  */
 public class TranslateException extends Exception {
     public TranslateException(Throwable e) {
-        initCause(e);
+        super(e);
     }
 }
