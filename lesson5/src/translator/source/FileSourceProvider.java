@@ -25,7 +25,6 @@ public class FileSourceProvider implements SourceProvider {
     @Override
     public String load(String pathToSource) throws IOException {
         StringBuilder content = new StringBuilder();
-        String fileText;
         try (BufferedReader reader = new BufferedReader(new FileReader(pathToSource))) {
             String line;
             while ((line = reader.readLine()) != null) {

@@ -16,14 +16,11 @@ public class SourceLoader {
     }
 
     public String loadSource(String pathToSource) throws IOException {
-
-
-        if (sourceProviders.get(0).isAllowed(pathToSource)) {
-            return sourceProviders.get(0).load(pathToSource);
-        } else if (sourceProviders.get(1).isAllowed(pathToSource)) {
-            return sourceProviders.get(1).load(pathToSource);
-        } else {
-           return null;
+        for (SourceProvider source : sourceProviders) {
+            if (source.isAllowed(pathToSource)) {
+                return source.load(pathToSource);
+            }
         }
+        return null;
     }
 }

@@ -24,17 +24,15 @@ public class URLSourceProvider implements SourceProvider {
 
     @Override
     public String load(String pathToSource) throws IOException {
-        StringBuilder builder = new StringBuilder();
-        String fileText;
+        StringBuilder content = new StringBuilder();
         URL url = new URL(pathToSource);
 
         try (BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()))) {
             String inputLine;
             while ((inputLine = in.readLine()) != null) {
-                builder.append(inputLine + "\n");
+                content.append(inputLine + "\n");
             }
-            fileText = builder.toString();
         }
-        return fileText;
+        return content.toString();
     }
 }
